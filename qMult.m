@@ -11,6 +11,7 @@ function [q0] = qMult(p, q)
 %
 % Author: Walter Livingston
 
+    % (TODO) This will not work with a 4x4 vector of quaternions
     szp = size(p);
     szq = size(q);
     [pFlag, qFlag] = deal(false);
