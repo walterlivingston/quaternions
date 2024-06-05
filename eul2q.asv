@@ -1,0 +1,40 @@
+function [q0] = eul2q(eul)
+% EUL2Q This function converts euler angles into a quaternion.
+%   This function converts the input vector of euler angles into a 
+%   quaternion. The orientation of rows & columns doesn't matter as the 
+%   function handles any orientation.
+% Inputs:
+%   eul :   (3xN) Vector of Euler Angles (RPY) [radians]
+% Outputs:
+%   q   :   Quaternion
+%
+% Author: Walter Livingston
+% References:
+%   - NASA Mission Planning and Analysis Division (July 1977). "Euler Angles, 
+%     Quaternions, and Transformation Matrices". NASA. Retrieved 24 May 2021.
+    sz = size(eul);
+    rotFlag = false;
+    if sz(1) == 1 || sz(1) > 3
+        rotFlag = true;
+        eul = eul';
+    end
+    cr = cos(eul(1,:).*0.5);
+    sr = sin(eul(1,:).*0.5);
+    cp = cos(eul(2,:).*0.5);
+    sp = sin(eul(2,:).*0.5);
+    cy = cos(eul(3,:).*0.5);
+    sy = sin(eul(3,:).*0.5);
+
+    % qx = np.sin(roll/2) * np.cos(pitch/2) * np.cos(yaw/2) - np.cos(roll/2) * np.sin(pitch/2) * np.sin(yaw/2)
+    % qy = np.cos(roll/2) * np.sin(pitch/2) * np.cos(yaw/2) + np.sin(roll/2) * np.cos(pitch/2) * np.sin(yaw/2)
+    % qz = np.cos(roll/2) * np.cos(pitch/2) * np.sin(yaw/2) - np.sin(roll/2) * np.sin(pitch/2) * np.cos(yaw/2)
+    % qw = np.cos(roll/2) * np.cos(pitch/2) * np.cos(yaw/2) + np.sin(roll/2) * np.sin(pitch/2) * np.sin(yaw/2)
+
+    q0 = [cr.*cp.*cy + sr.*sp.*sy;
+         sr.*cp.*cy - cr.*sp.*sy;
+         cr.*sp.*cy + sr.*cp.*sy;
+         cr.*cp.*sy - sr.*sp.*cy];
+
+    if rotFlag; q0 = q0'; end
+end
+
