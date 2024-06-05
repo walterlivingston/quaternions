@@ -83,13 +83,15 @@ classdef quaternionTests < matlab.unittest.TestCase
         end
         
         % (TODO) Fix q2DCM for Multiple Inputs
-        % function q2DCMMultipleInput(testCase)
-        %     att = (pi/5)*ones(3,10);
-        %     q = eul2q(att);
-        %     DCMEul = eul2rotm(att');
-        %     DCMQ = q2DCM(q);
-        %     testCase.verifyEqual(det(DCMEul - DCMQ), 0, AbsTol=sqrt(eps));
-        % end
+        function q2DCMMultipleInput(testCase)
+            N = 10;
+            att = (pi/5)*ones(3,N);
+            q = eul2q(att);
+            DCMEul = eul2rotm(att');
+            DCMQ = q2DCM(q);
+            diffDCM = reshape(DCMEul - DCMQ, [1,N*9,1]);
+            testCase.verifyEqual(diffDCM, zeros(1,N*9), AbsTol=sqrt(eps));
+        end
     end
 
 end
