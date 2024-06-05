@@ -27,11 +27,11 @@ The chosen conventions for the quaternions were chosen as to match Hamilton's de
 <div align="center">
   
 | Convention | Choice | Example |
-|---|---|---|
+|:---:|:---:|:---:|
 | Components Order | Scalar First |($q_w$ , **$q_v$**) |
 | Handedness | Right-Handed | $ij=k$ |
 | Rotation Function | Passive | $x_{\mathcal{B}}=q_{passive}\otimes x_{\mathcal{A}}\otimes q^*_{passive}$ |
-| Rotation Direction | Local-to-Global | $x_{\mathcal{G}}=q\otimes x_{\mathcal{L}}\otimes q^*$ |
+| Rotation Direction | Local-to-Global | $q\triangleq q_{\mathcal{GL}}$<br>$x_{\mathcal{G}}=q\otimes x_{\mathcal{L}}\otimes q^*$ |
 
 </div>
 
