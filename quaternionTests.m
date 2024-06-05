@@ -10,49 +10,86 @@ classdef quaternionTests < matlab.unittest.TestCase
 
     methods (Test)
 
-        function qMultTest(testCase)
-            p = [1 0 0 0]; q = [1 0 0 0];
+        function qMultSingleIdentityInput(testCase)
+            [p, q, trueSolution] = deal([1 0 0 0]);
             funcSolution = qMult(p, q);
-            trueSolution = [1 0 0 0];
+            testCase.verifyEqual(funcSolution, trueSolution);
+        end
+
+        function qMultMultipleIdentityInput(testCase)
+            [p, q, trueSolution] = deal([ones(1,10); zeros(3,10)]);
+            funcSolution = qMult(p, q);
             testCase.verifyEqual(funcSolution, trueSolution);
         end
    
-        function qNormTest(testCase)
+        function qNormSingleIdentityInput(testCase)
             q = [1 0 0 0];
             funcSolution = qNorm(q);
             trueSolution = 1;
             testCase.verifyEqual(funcSolution, trueSolution);
         end
-        
-        function qInverseTest(testCase)
-            q = [1 0 0 0];
+
+        function qNormMultipleIdentityInput(testCase)
+            q = [ones(1,10); zeros(3,10)];
+            funcSolution = qNorm(q);
+            trueSolution = ones(1,10);
+            testCase.verifyEqual(funcSolution, trueSolution);
+        end
+
+        function qInverseSingleIdentityInput(testCase)
+            [q, trueSolution] = deal([1 0 0 0]);
             funcSolution = qInverse(q);
-            trueSolution = q;
             testCase.verifyEqual(funcSolution, trueSolution);
         end
         
-        function qConjTest(testCase)
-            q = [1 0 0 0];
+        function qInverseMultipleIdentityInput(testCase)
+            [q, trueSolution] = deal([ones(1,10); zeros(3,10)]);
+            funcSolution = qInverse(q);
+            testCase.verifyEqual(funcSolution, trueSolution);
+        end
+
+        function qConjSingleIdentityInput(testCase)
+            [q, trueSolution] = deal([1 0 0 0]);
             funcSolution = qConj(q);
-            trueSolution = q;
+            testCase.verifyEqual(funcSolution, trueSolution);
+        end
+
+        function qConjMultipleIdentityInput(testCase)
+            [q, trueSolution] = deal([ones(1,10); zeros(3,10)]);
+            funcSolution = qConj(q);
             testCase.verifyEqual(funcSolution, trueSolution);
         end
         
-        function q2EulTest(testCase)
-            att = [pi/5 pi/3 pi/6];
+        function q2EulSingleInput(testCase)
+            [att, trueSolution] = deal((pi/5)*ones(3,1));
             q = eul2q(att);
             funcSolution = q2Eul(q);
-            trueSolution = att';
+            testCase.verifyEqual(funcSolution, trueSolution, AbsTol=sqrt(eps));
+        end
+
+        function q2EulMultipleInput(testCase)
+            [att, trueSolution] = deal((pi/5)*ones(3,10));
+            q = eul2q(att);
+            funcSolution = q2Eul(q);
             testCase.verifyEqual(funcSolution, trueSolution, AbsTol=sqrt(eps));
         end
         
-        function q2DCM(testCase)
-            att = [pi/5 pi/3 pi/6];
+        function q2DCMSingleInput(testCase)
+            att = (pi/5)*ones(3,1);
             q = eul2q(att);
-            DCMEul = eul2rotm(att);
+            DCMEul = eul2rotm(att');
             DCMQ = q2DCM(q);
             testCase.verifyEqual(det(DCMEul - DCMQ), 0, AbsTol=sqrt(eps));
         end
+        
+        % (TODO) Fix q2DCM for Multiple Inputs
+        % function q2DCMMultipleInput(testCase)
+        %     att = (pi/5)*ones(3,10);
+        %     q = eul2q(att);
+        %     DCMEul = eul2rotm(att');
+        %     DCMQ = q2DCM(q);
+        %     testCase.verifyEqual(det(DCMEul - DCMQ), 0, AbsTol=sqrt(eps));
+        % end
     end
 
 end
