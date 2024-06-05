@@ -91,6 +91,22 @@ classdef quaternionTests < matlab.unittest.TestCase
             diffDCM = reshape(DCMEul - DCMQ, [1,N*9,1]);
             testCase.verifyEqual(diffDCM, zeros(1,N*9), AbsTol=sqrt(eps));
         end
+
+        function DCM2qSingleInput(testCase)
+            att = (pi/5)*ones(3,1);
+            trueSolution = eul2q(att);
+            DCM = q2DCM(trueSolution);
+            funcSolution = DCM2q(DCM);
+            testCase.verifyEqual(funcSolution, trueSolution, AbsTol=sqrt(eps));
+        end
+
+        function DCM2qMultipleInput(testCase)
+            att = (pi/5)*ones(3,10);
+            trueSolution = eul2q(att);
+            DCM = q2DCM(trueSolution);
+            funcSolution = DCM2q(DCM);
+            testCase.verifyEqual(funcSolution, trueSolution, AbsTol=sqrt(eps));
+        end
     end
 
 end
