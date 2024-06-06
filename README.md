@@ -46,7 +46,7 @@ Note: For rotation direction, $q_{\mathcal{GL}}=q_{[with-respect-to][of]}=q_{[to
 1. Clone ***quaternions***.
 
 ```shell
-git clone https://github.com/walterlivingston/quaternion.git
+git clone https://github.com/walterlivingston/quaternions.git
 ```
 
 2. Add folder to MATLAB path
