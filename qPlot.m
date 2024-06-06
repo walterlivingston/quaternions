@@ -1,11 +1,18 @@
 function [] = qPlot(q)
-%QPLOT Summary of this function goes here
-%   Detailed explanation goes here
+% QPLOT This function plots the quaternion q.
+%   This function plots the vector components of q and color codes the 
+%   vector based on the scalar component. The orientation of rows & 
+%   columns doesn't matter as the function handles any orientation.
+% Inputs:
+%   q   :   Quaternion
+%
+% Author: Walter Livingston
     sz = size(q);
     if sz(1) == 1 || sz(1) > 4; q = q'; end
 
-    lim = [-0.5, 0.5];
+    % (TODO) Optional parameters for font size, color, etc.
 
+    lim = [-0.5, 0.5];
     figure();
     hold('on'); view(3); grid on;
     title('Quaternion Plot');
