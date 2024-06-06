@@ -52,7 +52,7 @@ git clone https://github.com/walterlivingston/quaternions.git
 2. Add folder to MATLAB path
 
 ```
-addpath('./quaternion')
+addpath('./quaternions')
 ```
 
 ## References <a name = "references"></a>
