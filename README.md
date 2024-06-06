@@ -35,6 +35,8 @@ The chosen conventions for the quaternions were chosen as to match Hamilton's de
 
 </div>
 
+Note: For rotation direction, $q_{\mathcal{GL}}=q_{[with-respect-to][of]}=q_{[to][from]}$[[1]](#1).
+
 ## Supported Languages <a name = "supported-languages"></a>
 
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/matlab/matlab-original.svg?sanitize=true" title="MATLAB" alt="MATLAB" width="40" height="40"/>&nbsp;
