@@ -48,6 +48,3 @@ def q2DCM(q:np.array) -> np.array:
 
 def DCM2q(q:np.array) -> np.array:
     pass
-
-q = np.array([1, 0, 0, 0])
-print(qNorm(q))
