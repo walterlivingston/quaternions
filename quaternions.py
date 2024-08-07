@@ -115,7 +115,26 @@ def eul2q(eul:np.array) -> np.array:
     return ret
 
 def q2DCM(q:np.array) -> np.array:
-    pass
+    sz = q.shape
+    if sz[0] == 1 or sz[0] > 4:
+        q = np.transpose(q)
+    sz = q.shape
 
-def DCM2q(q:np.array) -> np.array:
-    pass
+    if len(sz) > 1:
+        ret = np.zeros([3,3,sz[1]])
+        for i in range(0,sz[1]):
+            ret[...,...,i] = np.array([[(q[0,i]**2 + q[1,i]**2 - q[2,i]**2 - q[3,i]**2), 2*(q[1,i]*q[2,i] - q[0,i]*q[3,i]), 2*(q[1,i]*q[3,i] + q[0,i]*q[2,i])],
+                                       [2*(q[1,i]*q[2,i] + q[0,i]*q[3,i]), (q[0,i]**2 - q[1,i]**2 + q[2,i]**2 - q[3,i]**2), 2*(q[2,i]*q[3,i] - q[0,i]*q[1,i])],
+                                       [2*(q[1,i]*q[3,i] - q[0,i]*q[2,i]), 2*(q[2,i]*q[3,i] + q[0,i]*q[1,i]), (q[0,i]**2 - q[1,i]**2 - q[2,i]**2 + q[3,i]**2)]])
+    else:
+        ret = np.zeros([3,3,1])
+        ret = np.array([[(q[0]**2 + q[1]**2 - q[2]**2 - q[3]**2), 2*(q[1]*q[2] - q[0]*q[3]), 2*(q[1]*q[3] + q[0]*q[2])],
+                                [2*(q[1]*q[2] + q[0]*q[3]), (q[0]**2 - q[1]**2 + q[2]**2 - q[3]**2), 2*(q[2]*q[3] - q[0]*q[1])],
+                                [2*(q[1]*q[3] - q[0]*q[2]), 2*(q[2]*q[3] + q[0]*q[1]), (q[0]**2 - q[1]**2 - q[2]**2 + q[3]**2)]])
+    return ret
+
+def DCM2q(DCM:np.array) -> np.array:
+    return np.array([[np.sqrt(0.25*(1 + DCM[0,0,...] + DCM[1,1,...] + DCM[2,2,...]))],
+                     [np.sqrt(0.25*(1 + DCM[0,0,...] - DCM[1,1,...] - DCM[2,2,...]))],
+                     [np.sqrt(0.25*(1 - DCM[0,0,...] + DCM[1,1,...] - DCM[2,2,...]))],
+                     [np.sqrt(0.25*(1 - DCM[0,0,...] - DCM[1,1,...] + DCM[2,2,...]))]])
