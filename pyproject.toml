@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "quaternions"
+version = "0.1.0"
+description = "a python quaternion library with explicit declaration of quaternion conventions"
+authors = ["Walter Livingston <wblivingston18@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "^2.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
