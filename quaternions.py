@@ -16,10 +16,15 @@ def qMult(p: np.array, q:np.array) -> np.array:
     if p.shape != q.shape:
         raise Exception('Size of p & q must be equal!')
     
-    return np.squeeze(np.array([[p[0,...]*q[0,...] - p[1,...]*q[1,...] - p[2,...]*q[2,...] - p[3,...]*q[3,...]],
+    ret =  np.squeeze(np.array([[p[0,...]*q[0,...] - p[1,...]*q[1,...] - p[2,...]*q[2,...] - p[3,...]*q[3,...]],
                                 [p[0,...]*q[1,...] + p[1,...]*q[0,...] + p[2,...]*q[3,...] - p[3,...]*q[2,...]],
                                 [p[0,...]*q[2,...] - p[1,...]*q[3,...] + p[2,...]*q[0,...] + p[3,...]*q[1,...]],
                                 [p[0,...]*q[3,...] + p[1,...]*q[2,...] - p[2,...]*q[1,...] + p[3,...]*q[0,...]]]))
+    
+    if pFlag and qFlag:
+        ret = np.transpose(ret)
+    
+    return ret
 
 def qNorm(q: np.array) -> float:
     sz = q.shape
@@ -29,6 +34,20 @@ def qNorm(q: np.array) -> float:
     return np.sqrt(q[0,...]**2 + q[1,...]**2 + q[2,...]**2 + q[3,...]**2)
 
 def qNormalize(q: np.array) -> np.array:
+    sz = q.shape
+    flag = False
+    if sz[0] == 1 or sz[0] > 4:
+        flag = True
+        q = np.transpose(q)
+    
+    quatNorm = qNorm(q)
+    ret = q/quatNorm
+
+    if flag:
+        ret = np.transpose(ret)
+
+    return ret
+
     pass
 
 def qInverse(q: np.array) -> np.array:
