@@ -3,8 +3,23 @@ from collections import namedtuple
 
 EULER321 = namedtuple('EULER321', ['r','p','y'])
 
-def qMult(q: np.array, p:np.array) -> np.array:
-    pass
+def qMult(p: np.array, q:np.array) -> np.array:
+    szp = p.shape
+    szq = q.shape
+    pFlag = qFlag = False
+    if szp[0] == 1 or szp[0] > 4:
+        pFlag = True
+        p = np.transpose(p)
+    if szq[0] == 1 or szq[0] > 4:
+        qFlag = True
+        q = np.transpose(q)
+    if p.shape != q.shape:
+        raise Exception('Size of p & q must be equal!')
+    
+    return np.squeeze(np.array([[p[0,...]*q[0,...] - p[1,...]*q[1,...] - p[2,...]*q[2,...] - p[3,...]*q[3,...]],
+                                [p[0,...]*q[1,...] + p[1,...]*q[0,...] + p[2,...]*q[3,...] - p[3,...]*q[2,...]],
+                                [p[0,...]*q[2,...] - p[1,...]*q[3,...] + p[2,...]*q[0,...] + p[3,...]*q[1,...]],
+                                [p[0,...]*q[3,...] + p[1,...]*q[2,...] - p[2,...]*q[1,...] + p[3,...]*q[0,...]]]))
 
 def qNorm(q: np.array) -> float:
     pass
