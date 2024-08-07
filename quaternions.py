@@ -22,7 +22,11 @@ def qMult(p: np.array, q:np.array) -> np.array:
                                 [p[0,...]*q[3,...] + p[1,...]*q[2,...] - p[2,...]*q[1,...] + p[3,...]*q[0,...]]]))
 
 def qNorm(q: np.array) -> float:
-    pass
+    sz = q.shape
+    if sz[0] == 1 or sz[0] > 4:
+        q = np.transpose(q)
+
+    return np.sqrt(q[0,...]**2 + q[1,...]**2 + q[2,...]**2 + q[3,...]**2)
 
 def qNormalize(q: np.array) -> np.array:
     pass
@@ -44,3 +48,6 @@ def q2DCM(q:np.array) -> np.array:
 
 def DCM2q(q:np.array) -> np.array:
     pass
+
+q = np.array([1, 0, 0, 0])
+print(qNorm(q))
