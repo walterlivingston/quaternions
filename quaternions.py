@@ -48,12 +48,22 @@ def qNormalize(q: np.array) -> np.array:
 
     return ret
 
-    pass
+def qConj(q: np.array) -> np.array:
+    sz = q.shape
+    flag = False
+    if sz[0] == 1 or sz[0] > 4:
+        flag = True
+        q = np.transpose(q)
+
+    ret = q
+    ret[1:4,...] = -ret[1:4,...]
+
+    if flag:
+        ret = np.transpose(ret)
+
+    return ret
 
 def qInverse(q: np.array) -> np.array:
-    pass
-
-def qConj(q: np.array) -> np.array:
     pass
 
 def q2eul(q:np.array) -> EULER321:
