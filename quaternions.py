@@ -76,11 +76,43 @@ def qInv(q: np.array) -> np.array:
 
     return ret
 
-def q2eul(q:np.array) -> EULER321:
-    pass
+def q2eul(q:np.array) -> np.array:
+    sz = q.shape
+    flag = False
+    if sz[0] == 1 or sz[0] > 4:
+        flag = True
+        q = np.transpose(q)
 
-def eul2q(eul:EULER321) -> np.array:
-    pass
+    test = np.asin(2*(q[0,...]*q[2,...] - q[1,...]*q[3,...]))
+
+    ret =  np.array([[np.atan2(2*(q[0,...]*q[1,...] + q[2,...]*q[3,...]), 1 - 2*(q[1,...]**2 + q[2,...]**2))],
+                     [np.asin(2*(q[0,...]*q[2,...] - q[1,...]*q[3,...]))],
+                     [np.atan2(2*(q[0,...]*q[3,...] + q[1,...]*q[2,...]), 1 - 2*(q[2,...]**2 + q[3,...]**2))]])
+    
+    if flag:
+        ret = np.transpose(ret)
+
+    return ret
+
+def eul2q(eul:np.array) -> np.array:
+    sz = eul.shape
+    flag = False
+    if sz[0] == 1 or sz[0] > 4:
+        flag = True
+        eul = np.transpose(eul)
+
+    ss = np.sin(eul/2)
+    cc = np.cos(eul/2)
+
+    ret = np.squeeze(np.array([[cc[0,...]*cc[1,...]*cc[2,...] + ss[0,...]*ss[1,...]*ss[2,...]],
+                               [ss[0,...]*cc[1,...]*cc[2,...] - cc[0,...]*ss[1,...]*ss[2,...]],
+                               [cc[0,...]*ss[1,...]*cc[2,...] + ss[0,...]*cc[1,...]*ss[2,...]],
+                               [cc[0,...]*cc[1,...]*ss[2,...] - ss[0,...]*ss[1,...]*cc[2,...]]]))
+    
+    if flag:
+        ret = np.transpose(ret)
+
+    return ret
 
 def q2DCM(q:np.array) -> np.array:
     pass
