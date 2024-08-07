@@ -15,10 +15,11 @@
 
 ## Table of Contents
 
-- [Quaternion Conventions](#quaternion-conventions)
-- [Supported Languages](#supported-languages)
-- [Installation](#installation)
-- [References](#references)
+- [Table of Contents](#table-of-contents)
+- [Quaternion Conventions ](#quaternion-conventions-)
+- [Supported Languages ](#supported-languages-)
+- [Installation ](#installation-)
+- [References ](#references-)
 
 ## Quaternion Conventions <a name = "quaternion-conventions"></a>
 
@@ -47,13 +48,13 @@ Note: For rotation direction, $q_{\mathcal{GL}}=q_{[with-respect-to][of]}=q_{[to
 1. Clone ***quaternions***.
 
 ```shell
-git clone https://github.com/walterlivingston/quaternions.git
+git clone -b python https://github.com/walterlivingston/quaternions.git
 ```
 
-2. Add folder to MATLAB path
+2. Install w/ pip
 
-```
-addpath('./quaternions')
+```shell
+pip install quaternions/
 ```
 
 ## References <a name = "references"></a>
