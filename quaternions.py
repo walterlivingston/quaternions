@@ -40,7 +40,8 @@ def qNormalize(q: np.array) -> np.array:
         flag = True
         q = np.transpose(q)
     
-    ret = q/qNorm(q)
+    qn = qNorm(q)
+    ret = q/qn
 
     if flag:
         ret = np.transpose(ret)
