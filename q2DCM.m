@@ -11,9 +11,10 @@ function [DCM] = q2DCM(q)
 % Author: Walter Livingston
     sz = size(q);
     if sz(1) == 1 || sz(1) > 4; q = q'; end
+    sz = size(q);
     
     DCM = zeros(3,3,sz(2));
-    for i = 1:max(sz(2))
+    for i = 1:sz(2)
             DCM(:,:,i) = [(q(1,i).^2 + q(2,i).^2 - q(3,i).^2 - q(4,i).^2), 2*(q(2,i).*q(3,i) - q(1,i).*q(4,i)), 2*(q(2,i).*q(4,i) + q(1,i).*q(3,i));
                           2*(q(2,i).*q(3,i) + q(1,i).*q(4,i)), (q(1,i).^2 - q(2,i).^2 + q(3,i).^2 - q(4,i).^2), 2*(q(3,i).*q(4,i) - q(1,i).*q(2,i));
                           2*(q(2,i).*q(4,i) - q(1,i).*q(3,i)), 2*(q(3,i).*q(4,i) + q(1,i).*q(2,i)), (q(1,i).^2 - q(2,i).^2 - q(3,i).^2 + q(4,i).^2)];
