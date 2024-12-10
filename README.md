@@ -42,6 +42,7 @@ Note: For rotation direction, $q_{\mathcal{GL}}=q_{[with-respect-to][of]}=q_{[to
 
 <a href="https://github.com/walterlivingston/quaternions/tree/matlab"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/matlab/matlab-original.svg?sanitize=true" title="MATLAB" alt="MATLAB" width="40" height="40"/></a>&nbsp;
 <a href="https://github.com/walterlivingston/quaternions/tree/python"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg?sanitize=true" title="Python" alt="Python" width="40" height="40"/></a>&nbsp;
+<a href="https://github.com/walterlivingston/quaternions/tree/c++"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg?sanitize=true" title="C++" alt="CPlusPlus" width="40" height="40"/></a>&nbsp;
 
 >Click image for that language's library
 
