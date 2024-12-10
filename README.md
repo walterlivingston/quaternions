@@ -18,7 +18,6 @@
 - [Table of Contents](#table-of-contents)
 - [Quaternion Conventions ](#quaternion-conventions-)
 - [Supported Languages ](#supported-languages-)
-- [Installation ](#installation-)
 - [References ](#references-)
 
 ## Quaternion Conventions <a name = "quaternion-conventions"></a>
@@ -42,22 +41,9 @@ Note: For rotation direction, $q_{\mathcal{GL}}=q_{[with-respect-to][of]}=q_{[to
 
 <a href="https://github.com/walterlivingston/quaternions/tree/matlab"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/matlab/matlab-original.svg?sanitize=true" title="MATLAB" alt="MATLAB" width="40" height="40"/></a>&nbsp;
 <a href="https://github.com/walterlivingston/quaternions/tree/python"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg?sanitize=true" title="Python" alt="Python" width="40" height="40"/></a>&nbsp;
+<a href="https://github.com/walterlivingston/quaternions/tree/c++"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg?sanitize=true" title="C++" alt="CPlusPlus" width="40" height="40"/></a>&nbsp;
 
 >Click image for that language's library
-
-## Installation <a name = "installation"></a>
-
-1. Clone ***quaternions***.
-
-```shell
-git clone https://github.com/walterlivingston/quaternions.git
-```
-
-2. Add folder to MATLAB path
-
-```
-addpath('./quaternions')
-```
 
 ## References <a name = "references"></a>
 
